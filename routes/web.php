@@ -21,3 +21,7 @@ Route::get('auth/{provider}/callback', 'Auth\LoginController@handleProviderCallb
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix' => 'user', 'where' => ['id' => '[0-9]+']], function(){
+    Route::get('/profile', ['as'=>'user.profile', 'uses'=>'UserController@profile']);
+});
