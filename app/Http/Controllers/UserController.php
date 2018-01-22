@@ -10,7 +10,8 @@ use Auth;
 class UserController extends Controller
 {
     public function profile(){
-        $user = Socialite::driver('twitter')->user();
+        $user = Auth::user();
+        // $user = Socialite::driver('twitter')->user();
         dd($user);
 
         return redirect()->route('user.profile', compact('user'));
